@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=SDRTrunk
+Exec=/home/scanner/sdr-trunk/bin/sdr-trunk
+Terminal=false
