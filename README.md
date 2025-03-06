@@ -8,14 +8,23 @@ PiScanner is a DIY digital scanner that runs on Raspberry Pi 5. It uses a Softwa
 - Stream scanner activity and upload calls to Broadcastify.
 - Support for Bluetooth or 3.5mm audio.
 
-### Goals
-- Built-in battery for portable use.
-- Built-in speakers.
+### TODO
+- [x] Touchscreen
+- [x] Active Cooling
+- [ ] Battery
+- [ ] Speakers
+- [ ] Headphone Jack
+- [ ] Custom Case
+    - Antenna connector
+    - USB-C port
+    - Headphone Jack
+    - Power Button
+- [ ] Multiple SDRs
 
 ## Hardware Requirements
 - [Raspberry Pi 5](https://www.raspberrypi.com/products/raspberry-pi-5/) (8GB Minimum; 16GB Recommended)
 - [Raspberry Pi Active Cooler](https://www.raspberrypi.com/products/active-cooler/) (Not strictly necessary, but SDRTrunk can be fairly CPU intensive.)
-- [Raspberry Pi Touch Display 2](https://www.raspberrypi.com/products/touch-display-2/) (PiScanner could be adapted to work with the original touch display, but the new model is highly recommended due to its higher resolution. You will need the 15-22 pin display cable to connect it to Pi 5. You can also ignore the parts about rotating the display.)
+- [Raspberry Pi Touch Display 2](https://www.raspberrypi.com/products/touch-display-2/) (PiScanner could be adapted to work with the original touch display, but the new model is highly recommended due to its higher resolution. You will need the 15-22 pin display cable to connect it to Pi 5. You can also ignore the parts about rotating the display if you use the original.)
 - [Raspberry Pi RTC Battery](https://www.raspberrypi.com/products/rtc-battery/) (Not required for online-only use, but if you intend to use the Pi Scanner without internet, you need an RTC to ensure timestamps are correct.)
 - Touch Display Case (There are currently no commercially available cases for the Touch Display 2. SmartiPi says they will launch one in March 2025)
 - MiroSD Card
