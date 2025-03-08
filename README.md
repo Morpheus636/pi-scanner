@@ -6,7 +6,7 @@ PiScanner is a DIY digital scanner that runs on Raspberry Pi 5. It uses a Softwa
     - **NOTE:** Encrypted radio systems, such as those used by the NYPD and many European and Australian agencies, cannot be monitored.
 - Automatically import radio systems from the Radio Reference databases. (Requires a Radio Reference premium account.)
 - Stream scanner activity and upload calls to Broadcastify.
-- Support for Bluetooth or 3.5mm audio.
+- Support for Bluetooth audio.
 
 ### TODO
 - [x] Touchscreen
