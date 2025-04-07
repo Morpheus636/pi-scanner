@@ -12,8 +12,8 @@ PiScanner is a DIY digital scanner that runs on Raspberry Pi 5. It uses a Softwa
 - [x] Touchscreen
 - [x] Active Cooling
 - [ ] Battery
-- [ ] Speakers
-- [ ] Headphone Jack
+- [x] Speakers
+- [x] Headphone Jack
 - [ ] Custom Case
     - Antenna connector
     - USB-C port
@@ -26,6 +26,7 @@ PiScanner is a DIY digital scanner that runs on Raspberry Pi 5. It uses a Softwa
 - [Raspberry Pi Active Cooler](https://www.raspberrypi.com/products/active-cooler/) (Not strictly necessary, but SDRTrunk can be fairly CPU intensive.)
 - [Raspberry Pi Touch Display 2](https://www.raspberrypi.com/products/touch-display-2/) (PiScanner could be adapted to work with the original touch display, but the new model is highly recommended due to its higher resolution. You will need the 15-22 pin display cable to connect it to Pi 5. You can also ignore the parts about rotating the display if you use the original.)
 - [Raspberry Pi RTC Battery](https://www.raspberrypi.com/products/rtc-battery/) (Not required for online-only use, but if you intend to use the Pi Scanner without internet, you need an RTC to ensure timestamps are correct.)
+- [RASPIAUDIO Mic+ V3](https://raspiaudio.com/product/mic/) (Any Audio HAT will work, but this one is useful because it includes both speakers and a headphone jack. Not required if you are using PiScanner only as a streaming node or Bluetooth audio.)
 - Touch Display Case (There are currently no commercially available cases for the Touch Display 2. SmartiPi says they will launch one in March 2025)
 - MiroSD Card
 - USB-C Power Supply (The official 27W adapter is recommended, but and 5V 5A USB-C power adapter will work.)
@@ -52,9 +53,12 @@ PiScanner is a DIY digital scanner that runs on Raspberry Pi 5. It uses a Softwa
 
 ## Hardware Setup
 1. Insert the MicroSD card into the connector in the Pi.
-2. Connect the RTC battery to the J5 battery connector between the USB-C and HDMI port on the Pi 5. [See documentation from Raspberry Pi](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#real-time-clock-rtc)
-3. Connect the Touch Display to the Pi. [See documentation from Raspberry Pi](https://www.raspberrypi.com/documentation/accessories/touch-display-2.html#content)
+2. Install the Pi active cooler.
+3. Connect the RTC battery to the J5 battery connector between the USB-C and HDMI port on the Pi 5. [See documentation from Raspberry Pi](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#real-time-clock-rtc)
+4. Connect the Audio HAT to the Pi. You will need to use the included GPIO riser if you are also using the active cooler.
+5. Connect the Touch Display to the Pi. [See documentation from Raspberry Pi](https://www.raspberrypi.com/documentation/accessories/touch-display-2.html#content)
     - Connect the flex cable to the header labeled `CAM/DISP 1`.
+    - Connect the power cable to the GPIO pins on the Audio HAT in the same position as shown on the Pi in the instructions.
 
 
 ## Software Setup
