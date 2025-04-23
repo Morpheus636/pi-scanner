@@ -11,15 +11,15 @@ PiScanner is a DIY digital scanner that runs on Raspberry Pi 5. It uses a Softwa
 ### TODO
 - [x] Touchscreen
 - [x] Active Cooling
-- [ ] Battery
 - [x] Speakers
 - [x] Headphone Jack
+- [ ] Multiple Tuners
+- [ ] Battery
 - [ ] Custom Case
     - Antenna connector
     - USB-C port
     - Headphone Jack
     - Power Button
-- [ ] Multiple SDRs
 
 ## Hardware Requirements
 - [Raspberry Pi 5](https://www.raspberrypi.com/products/raspberry-pi-5/) (8GB Minimum; 16GB Recommended)
@@ -27,10 +27,10 @@ PiScanner is a DIY digital scanner that runs on Raspberry Pi 5. It uses a Softwa
 - [Raspberry Pi Touch Display 2](https://www.raspberrypi.com/products/touch-display-2/) (PiScanner could be adapted to work with the original touch display, but the new model is highly recommended due to its higher resolution. You will need the 15-22 pin display cable to connect it to Pi 5. You can also ignore the parts about rotating the display if you use the original.)
 - [Raspberry Pi RTC Battery](https://www.raspberrypi.com/products/rtc-battery/) (Not required for online-only use, but if you intend to use the Pi Scanner without internet, you need an RTC to ensure timestamps are correct.)
 - [RASPIAUDIO Mic+ V3](https://raspiaudio.com/product/mic/) (Any Audio HAT will work, but this one is useful because it includes both speakers and a headphone jack. Not required if you are using PiScanner only as a streaming node or Bluetooth audio.)
+- [RTL-SDR Nano](https://www.amazon.com/dp/B076GWF6FF) (This is a two pack. One will work, but you will be bandwidth limited if you want to monitor multiple channels.)
 - Touch Display Case (There are currently no commercially available cases for the Touch Display 2. SmartiPi says they will launch one in March 2025)
 - MiroSD Card
 - USB-C Power Supply (The official 27W adapter is recommended, but and 5V 5A USB-C power adapter will work.)
-- RTL SDR
 
 ## SD Card Setup
 1. Download and run the Raspberry Pi Imager on your computer.
