@@ -1,7 +1,7 @@
 # PiScanner
 PiScanner is a DIY digital scanner that runs on Raspberry Pi 5. It uses a Software Defined Radio with SDRTrunk to demodulate most trunked digital radio types. While analogue scanners are readily available for $100-200, commercially-available digital scanners start at $600 and go up from there. PiScanner is both more capable and cheaper, starting at approximately $250, depending on configuration options you choose.
 
-![Image of the back of PiScanner](/images/back.jpg)
+![Image of the back of PiScanner](/images/back.jpg | width=450)
 
 ## Features
 - Listen to digital and trunked radio systems used by most major public safety agencies in the US. 
