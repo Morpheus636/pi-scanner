@@ -126,8 +126,8 @@ PiScanner is a DIY digital scanner that runs on Raspberry Pi 5. It uses a Softwa
 
 9. **Enable Fan Control**
     ```sh
-    wget https://github.com/morpheus636/pi-scanner/raw/refs/heads/main/config/fan_control.py -o ~/fan_control.py
-    sudo wget https://github.com/morpheus636/pi-scanner/raw/refs/heads/main/config/fan-control.service -o /etc/systemd/system/fan-control.service
+    wget https://github.com/morpheus636/pi-scanner/raw/refs/heads/main/config/fan_control.py
+    sudo wget https://github.com/morpheus636/pi-scanner/raw/refs/heads/main/config/fan-control.service -P /etc/systemd/system/
     sudo systemctl daemon-reload
     sudo systemctl enable fan-control
     sudo systemctl start fan-control
@@ -157,7 +157,7 @@ PiScanner is a DIY digital scanner that runs on Raspberry Pi 5. It uses a Softwa
 
 3. **Create Application Menu Entry for SDRTrunk**
     ```sh
-    wget https://github.com/morpheus636/pi-scanner/raw/refs/heads/main/config/SDRTrunk.desktop -o .local/share/applications/SDRTrunk.desktop
+    wget https://github.com/morpheus636/pi-scanner/raw/refs/heads/main/config/SDRTrunk.desktop -P .local/share/applications/
     ```
 
 4. **Set SDRTrunk to Start Automatically**
