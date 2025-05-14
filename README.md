@@ -15,13 +15,12 @@ PiScanner is a DIY digital scanner that runs on Raspberry Pi 5. It uses a Softwa
 - [x] Active Cooling
 - [x] Speakers
 - [x] Headphone Jack
-- [ ] Multiple Tuners
+- [x] Case
+- [x] Multiple Tuners
+- [ ] External power connector
+- [ ] External power button
+- [ ] External headphone jack
 - [ ] Battery
-- [ ] Custom Case
-    - Antenna connector
-    - USB-C port
-    - Headphone Jack
-    - Power Button
 
 ## Hardware Requirements
 - [Raspberry Pi 5](https://www.raspberrypi.com/products/raspberry-pi-5/) (8GB Minimum; 16GB Recommended)
@@ -30,9 +29,12 @@ PiScanner is a DIY digital scanner that runs on Raspberry Pi 5. It uses a Softwa
 - [Raspberry Pi RTC Battery](https://www.raspberrypi.com/products/rtc-battery/) (Not required for online-only use, but if you intend to use the Pi Scanner without internet, you need an RTC to ensure timestamps are correct.)
 - [RASPIAUDIO Mic+ V3](https://raspiaudio.com/product/mic/) (Any Audio HAT will work, but this one is useful because it includes both speakers and a headphone jack. Not required if you are using PiScanner only as a streaming node or Bluetooth audio.)
 - [RTL-SDR Nano](https://www.amazon.com/dp/B076GWF6FF) (This is a two pack. One will work, but you will be bandwidth limited if you want to monitor multiple channels.)
-- Touch Display Case (There are currently no commercially available cases for the Touch Display 2. SmartiPi says they will launch one in March 2025)
+- [SmartiPi Touch Pro 3](https://smarticase.com/collections/smartipi-touch-pro-3/products/smartipi-touch-pro-3)
+- [Fan](https://smarticase.com/products/smartipi-touch-pro-3-fan?pr_prod_strat=jac&pr_rec_id=398c95a2a&pr_rec_pid=7754016063551&pr_ref_pid=7739155054655&pr_seq=uniform) - Get the one for Raspberry Pi 4, because the Pi 5's fan header is already being used by the active cooler.
 - MiroSD Card
 - USB-C Power Supply (The official 27W adapter is recommended, but and 5V 5A USB-C power adapter will work.)
+- Right-angle USB-C adapter
+- Dupont extension jumpers
 
 ## SD Card Setup
 1. Download and run the Raspberry Pi Imager on your computer.
@@ -58,9 +60,14 @@ PiScanner is a DIY digital scanner that runs on Raspberry Pi 5. It uses a Softwa
 2. Install the Pi active cooler.
 3. Connect the RTC battery to the J5 battery connector between the USB-C and HDMI port on the Pi 5. [See documentation from Raspberry Pi](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#real-time-clock-rtc)
 4. Connect the Audio HAT to the Pi. You will need to use the included GPIO riser if you are also using the active cooler.
-5. Connect the Touch Display to the Pi. [See documentation from Raspberry Pi](https://www.raspberrypi.com/documentation/accessories/touch-display-2.html#content)
+5. Connect the Touch Display to the Pi. You will need dupont extensions. [See documentation from Raspberry Pi](https://www.raspberrypi.com/documentation/accessories/touch-display-2.html#content).
     - Connect the flex cable to the header labeled `CAM/DISP 1`.
-    - Connect the power cable to the GPIO pins on the Audio HAT in the same position as shown on the Pi in the instructions.
+    - Connect the red wire to pin 2
+    - Connect the black wire to pin 6
+6. Connect the second fan to the Pi. You will need dupont extensions.
+    - Connect the red wire to pin 4
+    - Connect the black wire to pin 9
+    - Connect the blue wire to pin 12
 
 
 ## Software Setup
@@ -102,7 +109,7 @@ PiScanner is a DIY digital scanner that runs on Raspberry Pi 5. It uses a Softwa
     sudo raspi-config nonint do_wayland W3
     ```
 
-7. **Rotate GUI** The Touch Display 2 is portrait by default. To rotate the GUI environment, use the GUI to open the Raspberry Pi menu, then navigate to **Preferences** > **Screen Configuration**. At the bottom left of the Screen Configuration menu, click **Screens** > **DSI-2** > **Orientation** > **Right**, then click **Apply**.
+7. **Rotate GUI** The Touch Display 2 is portrait by default. To rotate the GUI environment, use the GUI to open the Raspberry Pi menu, then navigate to **Preferences** > **Screen Configuration**. At the bottom left of the Screen Configuration menu, click **Screens** > **DSI-2** > **Orientation** > **Left**, then click **Apply**.
 
 8. **Rotate Terminal** To rotate the pre-desktop environment, you will need to modify `/boot/firmware/cmdline.txt`.
     - Run:
@@ -112,12 +119,21 @@ PiScanner is a DIY digital scanner that runs on Raspberry Pi 5. It uses a Softwa
 
     - Scroll to the end of the first line and insert the following (separated by one space from the existing text). Note the whole file should be one line.
         ```
-        video=DSI-2:720x1280@60,rotate=270
+        video=DSI-2:720x1280@60,rotate=90
         ```
 
     - Press `Ctrl` + `x`, then `Y` and `Enter` to save and exit.
 
-9. **Reboot**
+9. **Enable Fan Control**
+    ```sh
+    wget https://github.com/morpheus636/pi-scanner/raw/refs/heads/main/config/fan_control.py -o ~/fan_control.py
+    sudo wget https://github.com/morpheus636/pi-scanner/raw/refs/heads/main/config/fan-control.service -o /etc/systemd/system/fan-control.service
+    sudo systemctl daemon-reload
+    sudo systemctl enable fan-control
+    sudo systemctl start fan-control
+    ```
+
+10. **Reboot**
     ```sh
     sudo reboot
     ```

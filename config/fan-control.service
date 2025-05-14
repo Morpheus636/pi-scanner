@@ -1,0 +1,8 @@
+[Unit]
+Description= Enable fan control
+
+[Service]
+ExecStart=python /home/scanner/fan_control.py
+
+[Install]
+WantedBy=multi-user.target
